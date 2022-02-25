@@ -32,8 +32,8 @@ class RichSuggestion extends StatelessWidget {
   List<TextSpan> getStyledTexts(BuildContext context) {
     final List<TextSpan> result = [];
 
-    String startText =
-        autoCompleteItem.text.substring(0, autoCompleteItem.offset);
+    String startText = 
+        autoCompleteItem.text!.substring(0, autoCompleteItem.offset);
     if (startText.isNotEmpty) {
       result.add(
         TextSpan(
@@ -47,8 +47,7 @@ class RichSuggestion extends StatelessWidget {
       );
     }
 
-    String boldText = autoCompleteItem.text.substring(autoCompleteItem.offset,
-        autoCompleteItem.offset + autoCompleteItem.length);
+    String boldText = autoCompleteItem.text!.substring(autoCompleteItem.offset!, autoCompleteItem.offset! + autoCompleteItem.length!);
 
     result.add(
       TextSpan(
@@ -63,8 +62,8 @@ class RichSuggestion extends StatelessWidget {
 
     String remainingText = this
         .autoCompleteItem
-        .text
-        .substring(autoCompleteItem.offset + autoCompleteItem.length);
+        .text!
+        .substring(autoCompleteItem.offset! + autoCompleteItem.length!);
     result.add(
       TextSpan(
         text: remainingText,

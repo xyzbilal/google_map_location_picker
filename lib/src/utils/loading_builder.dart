@@ -9,11 +9,12 @@ import 'log.dart';
 typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 
 class FutureLoadingBuilder<T> extends StatefulWidget {
-  const FutureLoadingBuilder({
-    Key key,
-    @required this.future,
+
+   FutureLoadingBuilder({
+    Key? key,
+    required this.future,
     this.initialData,
-    @required this.builder,
+    required this.builder,
     this.mutable = false,
     this.loadingIndicator,
   })  : assert(builder != null),
@@ -24,9 +25,9 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   ///
   /// If no future has yet completed, including in the case where [future] is
   /// null, the data provided to the [builder] will be set to [initialData].
-  final Future<T> future;
+  late Future<T> future;
 
-  final WidgetBuilder<T> builder;
+  late WidgetBuilder<T> builder;
 
   /// The data that will be used to create the snapshots provided until a
   /// non-null [future] has completed.
@@ -35,14 +36,14 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   /// provided to the [builder] will become null, regardless of [initialData].
   /// (The error itself will be available in [AsyncSnapshot.error], and
   /// [AsyncSnapshot.hasError] will be true.)
-  final T initialData;
+  final T? initialData;
 
   /// default is true
   ///
   /// set to false if the future will change.
-  final bool mutable;
+  late bool mutable;
 
-  final Widget loadingIndicator;
+  final Widget? loadingIndicator;
 
   @override
   _FutureLoadingBuilderState<T> createState() =>
@@ -50,7 +51,7 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
 }
 
 class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
-  Future<T> future;
+  Future<T>? future;
 
   @override
   void initState() {
